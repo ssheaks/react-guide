@@ -7,15 +7,16 @@ const app = () => {
   //useState allows us to manage state in a functional component by passing in the state object and storing as a state array consant
   //using array destructuring, personsState gives you access to the state object, setPersonsState is a function that allows you to update the state
   const [ personsState, setPersonsState ] = useState({
-      persons: [
-        {name: 'Sarah', age: 36},
-        {name: 'Gazelle', age: 5},
-        {name: 'Holly', age: 9}
-      ],
-      otherState: 'some other state'
-    });
+    persons: [
+      {name: 'Sarah', age: 36},
+      {name: 'Gazelle', age: 5},
+      {name: 'Holly', age: 9}
+    ]
+  });
   
-    console.log(personsState);
+  const [otherState, setOtherState] = useState('some other value')
+  
+  console.log(personsState, otherState);
 
   //use a function in a function to create the setPersonsState function
   const switchNameHandler = () => {
@@ -26,11 +27,9 @@ const app = () => {
       {name: 'Haras', age: 63},
       {name: 'Ellezeg', age: 50},
       {name: 'Ylloh', age: 90}
-    ],
-    otherState: personsState.otherState
-  });
-  // console.log(personsState)
-};
+      ]
+    });
+  };
 
   //use personsState instead of this.state
   return (
