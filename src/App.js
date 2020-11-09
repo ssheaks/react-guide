@@ -11,17 +11,27 @@ state = {
   ]
 }
 
-switchNameHandler = (newName) => {
-  //Change the state with React's special method in the React extended {Component} object: setState(). This ensures React updates the state and the DOM
-  this.setState({
-    persons: [
-      {name: newName, age: 63},
-      {name: 'Ellezeg', age: 50},
-      {name: 'Ylloh', age: 90}
-    ]
-  })
-  console.log(this.state)
-}
+  switchNameHandler = (newName) => {
+    //Change the state with React's special method in the React extended {Component} object: setState(). This ensures React updates the state and the DOM
+    this.setState({
+      persons: [
+        {name: newName, age: 63},
+        {name: 'Ellezeg', age: 50},
+        {name: 'Ylloh', age: 90}
+      ]
+    })
+    console.log(this.state)
+  }
+
+  nameChangeHandler = (event) => {
+    this.setState( {
+      persons: [
+        {name: 'Haras', age: 63},
+        {name: event.target.value, age: 50},
+        {name: 'Ylloh', age: 90}
+      ]
+    })
+  }
 
   render() {
     return (
@@ -35,7 +45,8 @@ switchNameHandler = (newName) => {
         <Person 
         name={this.state.persons[1].name} 
         age ={this.state.persons[1].age}
-        click={this.switchNameHandler.bind(this, 'Sarah')}>My Hobbies: Eating Poo</Person>
+        click={this.switchNameHandler.bind(this, 'Sarah')}
+        changed={this.nameChangeHandler}>My Hobbies: Eating Poo</Person>
         <Person 
         name={this.state.persons[2].name} 
         age={this.state.persons[2].age}/>
