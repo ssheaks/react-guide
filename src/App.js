@@ -62,7 +62,8 @@ state = {
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -83,7 +84,8 @@ state = {
               changed={(event) => this.nameChangeHandler(event, person.id)} />
             })}
         </div>
-      )
+      );
+      style.backgroundColor = 'red';
     }
 
     return (
