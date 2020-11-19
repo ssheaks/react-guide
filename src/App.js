@@ -4,7 +4,7 @@ import './App.css';
 import Person from './Person/Person'
 
 const StyledButton = styled.button`
-  background-color: green;
+  background-color: ${props => props.alt ? 'red' : 'green'};
   color: white;
   font: inherit;
   border: 1px solid blue;
@@ -12,7 +12,7 @@ const StyledButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: lightgreen;
+    background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
     color: black;
   `;
 
@@ -103,11 +103,11 @@ state = {
             })}
         </div>
       );
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
+      // style.backgroundColor = 'red';
+      // style[':hover'] = {
+      //   backgroundColor: 'salmon',
+      //   color: 'black'
+      // }
     }
 
     //set classes dynamically
@@ -127,7 +127,7 @@ state = {
           <p className={classes.join(' ')}>This is really working!</p>
           {/* <button 
           style={style} */}
-          <StyledButton onClick={this.togglePersonsHandler}>
+          <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}>
           Toggle Persons
           {/* onClick={this.togglePersonsHandler}>Toggle Persons</button> */}
           </StyledButton>
