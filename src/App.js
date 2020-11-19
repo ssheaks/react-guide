@@ -27,19 +27,6 @@ state = {
   showPersons: false
 }
 
-  // switchNameHandler = (newName) => {
-  //   //Change the state with React's special method in the React extended {Component} object: setState(). This ensures React updates the state and the DOM
-  //   this.setState({
-  //     persons: [
-  //       {name: newName, age: 63},
-  //       {name: 'Ellezeg', age: 50},
-  //       {name: 'Ylloh', age: 90}
-  //     ]
-  //   })
-  //   console.log(this.state)
-  // }
-
-
   nameChangeHandler = (event, id) => {
     //use findIndex() method to check if the id is equal to the id of the person and if true return the index of the person we are updating.
     const personIndex = this.state.persons.findIndex(p => {
@@ -103,11 +90,11 @@ state = {
             })}
         </div>
       );
-      // style.backgroundColor = 'red';
-      // style[':hover'] = {
-      //   backgroundColor: 'salmon',
-      //   color: 'black'
-      // }
+      style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
     }
 
     //set classes dynamically
@@ -125,12 +112,7 @@ state = {
         <div className="App">
           <h1>Hi, I'm a React App</h1>
           <p className={classes.join(' ')}>This is really working!</p>
-          {/* <button 
-          style={style} */}
-          <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}>
-          Toggle Persons
-          {/* onClick={this.togglePersonsHandler}>Toggle Persons</button> */}
-          </StyledButton>
+          <button className='button' onClick={this.togglePersonsHandler}>Toggle Persons</button>
           {persons}
         </div>
     );
