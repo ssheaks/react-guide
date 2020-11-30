@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 class App extends Component {
 state = {
@@ -16,7 +17,7 @@ state = {
   nameChangeHandler = (event, id) => {
     //use findIndex() method to check if the id is equal to the id of the person and if true return the index of the person we are updating.
     const personIndex = this.state.persons.findIndex(p => {
-      return p.id ===id;
+      return p.id===id;
     })
 
     //Using the index returned above we can set a constant person to update the state with the input value. Make sure not to update the object in the state directly, use spread operator or Object.Assign:
@@ -48,7 +49,7 @@ state = {
   }
 
   render() {
-    let btnClass = [classes.Button];
+    let btnClass = '';
 
     let persons = null;
 
@@ -56,16 +57,17 @@ state = {
       persons = (
           <div>
             {this.state.persons.map((person, index) => {
-              return <Person 
-              click={() => this.deletePersonHandler(index)}
-              name={person.name}
-              age={person.age}
-              key={person.id}
-              changed={(event) => this.nameChangeHandler(event, person.id)} />
+              return <ErrorBoundary key={person.id}>
+                <Person 
+                click={() => this.deletePersonHandler(index)}
+                name={person.name}
+                age={person.age}
+                changed={(event) => this.nameChangeHandler(event, person.id)} />
+              </ErrorBoundary>
             })}
         </div>
       );
-      btnClass.push(classes.Red);
+      btnClass = classes.Red;
     }
 
     //set classes dynamically
@@ -83,7 +85,7 @@ state = {
         <div className={classes.App}>
           <h1>Hi, I'm a React App</h1>
           <p className={assignedClasses.join(' ')}>This is really working!</p>
-          <button className={btnClass.join(' ')} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+          <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons</button>
           {persons}
         </div>
     );
