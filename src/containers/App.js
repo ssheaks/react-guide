@@ -4,15 +4,32 @@ import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit'
 
 class App extends Component {
-state = {
-  persons: [
-    {id: 'fvnk', name: 'Sarah', age: 36},
-    {id: 'v35j', name: 'Gazelle', age: 5},
-    {id: 'ne98', name: 'Holly', age: 9}
-  ],
-  otherState: 'some other value',
-  showPersons: false
-}
+  constructor(props) {
+    super(props);
+    console.log('[App.js] constructor');
+  }
+  state = {
+    persons: [
+      {id: 'fvnk', name: 'Sarah', age: 36},
+      {id: 'v35j', name: 'Gazelle', age: 5},
+      {id: 'ne98', name: 'Holly', age: 9}
+    ],
+    otherState: 'some other value',
+    showPersons: false
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props);
+    return state;
+  }
+
+  componentWillMount() {
+    console.log('[App.js] componentWillMount')
+  }
+
+  componentDidMount() {
+    console.log('[App.js] component mounted')
+  };
 
   nameChangeHandler = (event, id) => {
     //use findIndex() method to check if the id is equal to the id of the person and if true return the index of the person we are updating.
@@ -49,7 +66,9 @@ state = {
   }
 
   render() {
+    console.log('[App.js] render');
     let persons = null;
+
     if (this.state.showPersons) {
       persons = (
           <div>
