@@ -23,7 +23,7 @@ class App extends Component {
     return state;
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     console.log('[App.js] componentWillMount')
   }
 
